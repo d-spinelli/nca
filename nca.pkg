@@ -1,15 +1,15 @@
-nca.ado
-nca.sthlp
-nca_centiles.ado
-nca_display.ado
-nca_display_bottleneck_table.ado
-nca_estimate.ado
-nca_get_centiles.ado
-nca_parse_scope.ado
-nca_perm.ado
-nca_power.ado
-nca_power.sthlp
-nca_random.ado
-nca_random.sthlp
-nca_test.ado
-lnca.mlib
+F nca.ado
+F nca.sthlp
+F nca_centiles.ado
+F nca_display.ado
+F nca_display_bottleneck_table.ado
+F nca_estimate.ado
+F nca_get_centiles.ado
+F nca_parse_scope.ado
+F nca_perm.ado
+F nca_power.ado
+F nca_power.sthlp
+F nca_random.ado
+F nca_random.sthlp
+F nca_test.ado
+F lnca.mlib
