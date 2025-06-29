@@ -1,0 +1,9 @@
+v 1.1.0
+d Materials by D. Spinelli
+d University of Milano-Bicocca
+d daniele.spinelli@unimib.it
+d https://github.com/d-spinelli/nca
+
+d 'nca': Perform Necessary Condition Analysis
+
+p nca
