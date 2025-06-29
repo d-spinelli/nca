@@ -1,0 +1,21 @@
+nca.ado
+nca.sthlp
+nca_centiles.ado
+nca_display.ado
+nca_display_bottleneck_table.ado
+nca_estimate.ado
+nca_get_centiles.ado
+nca_parse_scope.ado
+nca_perm.ado
+nca_power.ado
+nca_power.sthlp
+nca_random.ado
+nca_random.sthlp
+nca_test.ado
+lnca.mlib
+
+type nca.sthlp
+version 1.1.0
+requires 15
+author Daniele Spinelli
+support daniele.spinelli@unimib.it
