@@ -13,3 +13,5 @@ F nca_random.ado
 F nca_random.sthlp
 F nca_test.ado
 F lnca.mlib
+F ncaexample.dta
+F ncaexample2.dta
