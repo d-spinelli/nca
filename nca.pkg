@@ -13,9 +13,3 @@ nca_random.ado
 nca_random.sthlp
 nca_test.ado
 lnca.mlib
-
-type nca.sthlp
-version 1.0.0
-requires 15
-author Your Name
-support your.email@example.com
