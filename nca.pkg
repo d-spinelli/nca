@@ -15,7 +15,7 @@ nca_test.ado
 lnca.mlib
 
 type nca.sthlp
-version 1.1.0
+version 1.0.0
 requires 15
-author Daniele Spinelli
-support daniele.spinelli@unimib.it
+author Your Name
+support your.email@example.com
