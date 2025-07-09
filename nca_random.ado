@@ -1,4 +1,4 @@
-*! nca_random v3 01 jul 2025
+*! nca_random 0.7 09 jul 2025
 cap pro drop nca_random 
 pro def nca_random
 syntax [namelist], n(numlist min=1 max=1 integer >=1) Slopes(numlist) Intercepts(numlist) [ /// 
