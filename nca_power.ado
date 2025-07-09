@@ -1,4 +1,4 @@
-*! nca_power 0.3 09 jul 2025
+*! nca_power v0.3 09 jul 2025
 pro def nca_power, rclass
 version 16
 syntax ,[ n(numlist integer >0 sort) Rep(numlist integer >0 min=0 max=1 ) Effect(numlist min=0  max=1 >0 <1) Slope(real 1) CEiling(namelist max=1) XDistribution(namelist max=1) YDistribution(namelist max=1) Testrep(numlist integer >0 max=1)  XMean(numlist min=0 max=1) XSd(numlist min=0 >0) YMean(numlist min=0 max=1)  YSd(numlist min=0 >0 max=1) Alpha(real 0.05) saving(string asis) COrner(numlist integer >0 <5 max=1)]
