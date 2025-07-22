@@ -1,5 +1,5 @@
 {smcl}
-{* *! version 1.0 21 Oct 2024}{...}
+{* *! version 0.4 22 Jul 2025}{...}
 {vieweralsosee "" "--"}{...}
 {vieweralsosee "Install nca" "ssc install nca"}{...}
 {vieweralsosee "Help nca (if installed)" "help nca"}{...}
@@ -50,7 +50,7 @@
 
 {synopt:{opt t:estrep(#)}}  The number of permutations to be used in the approximate premutation test.
 
-{synopt:{opt a:lpha(#)}} specifies the significance level to be considered during for the the approximate premutation test. 
+{synopt:{opt p(#)}} specifies the significance level to be considered during for the the approximate premutation test. 
 
 {synoptline}
 {p2colreset}{...}
@@ -105,7 +105,7 @@ Power evaluation under a necessity framework. Calculates the power of a NCA appr
 {opt t:estrep(#)}  The number of permutations to be used in the approximate premutation test. The default value is 200.
 
 {phang}
-{opt a:lpha(#)} specifies the significance level to be considered during for the the approximate premutation test. The default is 0.05.
+{opt p(#)} specifies the significance level to be considered during for the the approximate premutation test. The default is 0.05.
 
 {marker examples}{...}
 {title:Examples}

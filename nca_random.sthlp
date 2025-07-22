@@ -1,5 +1,5 @@
 {smcl}
-{* *! version 3.0 09 Jul 2025}{...}
+{* *! version 0.7 09 Jul 2025}{...}
 {vieweralsosee "" "--"}{...}
 {vieweralsosee "Install nca" "ssc install nca"}{...}
 {vieweralsosee "Help nca (if installed)" "help nca"}{...}

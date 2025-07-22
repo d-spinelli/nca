@@ -1,7 +1,7 @@
-*! nca_power v0.3 09 jul 2025
+*! nca_power v0.4 22 jul 2025
 pro def nca_power, rclass
 version 16
-syntax ,[ n(numlist integer >0 sort) Rep(numlist integer >0 min=0 max=1 ) Effect(numlist min=0  max=1 >0 <1) Slope(real 1) CEiling(namelist max=1) XDistribution(namelist max=1) YDistribution(namelist max=1) Testrep(numlist integer >0 max=1)  XMean(numlist min=0 max=1) XSd(numlist min=0 >0) YMean(numlist min=0 max=1)  YSd(numlist min=0 >0 max=1) Alpha(real 0.05) saving(string asis) COrner(numlist integer >0 <5 max=1)]
+syntax ,[ n(numlist integer >0 sort) Rep(numlist integer >0 min=0 max=1 ) Effect(numlist min=0  max=1 >0 <1) Slope(real 1) CEiling(namelist max=1) XDistribution(namelist max=1) YDistribution(namelist max=1) Testrep(numlist integer >0 max=1)  XMean(numlist min=0 max=1) XSd(numlist min=0 >0) YMean(numlist min=0 max=1)  YSd(numlist min=0 >0 max=1) p(real 0.05) saving(string asis) COrner(numlist integer >0 <5 max=1)]
 	CheckSaving2 `saving'
 	tempname _estimates
 	cap estimates store `_estimates'
@@ -13,8 +13,12 @@ if ("`rep'"=="") local rep=100
 if ("`testrep'"=="") local testrep=200
 if ("`xdistribution'"=="") local xdistribution uniform
 if ("`ydistribution'"=="") local ydistribution uniform
-// local intercept=1-`effect'-0.5*`slope'
-cap mata: st_local("intercept", strofreal(_nca_get_intercept(`effect', `slope') ))
+cap numlist "`p'", range(>0 <1)
+if _rc {
+	di as error "error in option {bf:p}: value outside of the (0,1) range"
+	exit _rc
+	}
+	cap mata: st_local("intercept", strofreal(_nca_get_intercept(`effect', `slope') ))
 if _rc {
 	di as error "error in calculating the intercept"
 	exit _rc
@@ -35,7 +39,7 @@ frame create `df'
 	local nnobs=(`:word count of `n''-1)
 	matrix `res'=J( `rep',`nnobs',.)
 	matrix `pval'=J( `rep',`nnobs',.)
-	*matrix rr=`res'
+	local alpha=`p'
 frame `df' {	
 	 _dots 0, title(Iterations) reps(`=`rep'*`nnobs'')
 	foreach nobs of local n {
@@ -83,7 +87,7 @@ local rnames `rnames' "Power`nobs'"
 	di as text "ceiling: {bf:`ceiling'}"
 	di as text "corner: {bf: `corner'}"
 	di as text "distribution of X: {bf:`xdistribution'}"_n"distribution of Y: {bf:`ydistribution'}"
-	di as text "alpha = " as result `alpha'
+	di as text "signficance level = " as result `alpha'
 	matrix rownames `res'=""
 	matlist `res' ,  names(columns)
 	cap estimates restore `_estimates'
