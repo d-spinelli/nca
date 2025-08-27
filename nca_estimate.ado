@@ -1,8 +1,6 @@
-
 ************START NCA_ESTIMATE
-
 pro def nca_estimate, eclass 
-syntax varlist (numeric min=2) [if] [in], [CEILings(string asis) nograph  TESTrep(integer 0)  GRAPHNAmes(string) nocombine BOTtlenecks(numlist sort) BOTtlenecks_default SCOpe(numlist missingokay)  flipx flipy CORner(numlist integer missingokay) steps(integer 10) stepsize(numlist max=1 >=0) XBOTtlenecks(string) YBOTtlenecks(string) cutoff(integer 0) noSummaries Version(integer 3)]
+syntax varlist (numeric min=2) [if] [in], [CEILings(string asis) nograph  TESTrep(integer 0)  GRAPHNAmes(string) nocombine BOTtlenecks(numlist sort) BOTtlenecks_default SCOpe(numlist missingokay)  flipx flipy CORner(numlist integer missingokay) steps(integer 10) stepsize(numlist max=1 >=0) XBOTtlenecks(string) YBOTtlenecks(string) cutoff(integer 0) noSummaries Version(integer 3) peers(name max=1) scopeobs(name max=1)]
 marksample touse //setting the estimation sample
 
 local version "v`version'"
@@ -22,9 +20,15 @@ else {
 	}	
 	
 }
+if ("`peers'"!="") {
+	if ("`scope'"!="" | `: word count `varlist''!=2 | `: word count `ceilings''!=1) {
+		di as error "invalid syntax: option {bf: peers} available for a single ceiling with empirical scope and a single X"
+		exit 144
+	}
+}
 //parsing scopes (scopeX and ScopeY are the extremes of the empirical scope)
 tempname scopeX scopeY scopemat empirical_scopemat
-nca_parse_scope `varlist', scope(`scope')
+nca_parse_scope `varlist' if `touse', scope(`scope')
 matrix `scopeY'=r(scopeY)
 matrix `scopeX'=r(scopeX)
 matrix `scopemat'=r(scopematrix)
@@ -144,8 +148,13 @@ foreach x of local X {
 	local plotcmd 
 	matrix `scopex'=`scopeX'[rownumb(`scopeX',"`x'"),1..2]
 	gettoken corner_x corner : corner
-	 m: _nca_main("`y'", "`x'" ,"`touse'", "`scopeY'", "`scopex'", `corner_x', "`ceilings'" , "`bottlenecks'", "`graphnames'" , `cutoff')
-
+	 m: _nca_main("`y'", "`x'" ,"`touse'", "`scopeY'", "`scopex'", `corner_x', "`ceilings'" , "`bottlenecks'", "`graphnames'" , `cutoff', "`peers'")
+	quietly if ("`scopeobs'"!="") {
+		summarize `x' if `touse'
+		gen byte `scopeobs'=inlist(`x',r(min), r(max)) if `touse'
+		summarize `y' if `touse'
+		replace `scopeobs'=1 if inlist(`y',r(min), r(max)) & `touse'
+	}
 	matrix colnames `result_x'=`ceilings'
 	matrix coleq `result_x'=`x'
 		matrix `results'=nullmat(`results') , `result_x'
