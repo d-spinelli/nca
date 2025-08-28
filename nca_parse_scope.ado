@@ -1,5 +1,5 @@
 
-cap pro drop nca_parse_scope
+
 pro def nca_parse_scope, rclass
 syntax varlist [if] [in], [scope(numlist missingokay)]
 tempname scopemat scopeX scopeY empirical_scopemat

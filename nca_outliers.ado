@@ -2,19 +2,22 @@
 pro def nca_outliers
 syntax varlist (numeric min=2 max=2) [if] [in], IDvar(varlist  numeric  min=1 max=1) [CEILing(string) CORner(integer 1) flipx flipy k(integer 1) MINDif(real 0.01)  MAXResults(integer 25) save(string asis) verbose]
 if ("`ceiling'"=="") local ceiling ce_fdh
+isid `idvar'
 tempname  scopeout1 peers1 scopeout peers
 tempvar pv
 marksample touse
  nca_estimate `varlist' if `touse', ceil(`ceiling') corner(`corner') `flipx' `flipy' nograph peers(`peers1') scopeobs(`scopeout1')
+ //list `idvar' `peers1' `scopeout1' if `peers1' | `scopeout1'
+ //exit
 local ES=e(results)["Effect size",1]
 
 quie gen `pv'=((`peers1'==1) | (`scopeout1'==1)) if e(sample)
-isid `idvar'
+
 
 local droplist   `peers1' `scopeout1'
 
 quie forval j=1/`k' {
-if (`j'==1) continue
+if (`j'==1 | `k'==1) continue
 	tempname  scopeout`j' peers`j'
     nca_estimate `varlist' if `touse' & !`pv', ceil(`ceiling') corner(`corner') `flipx' `flipy' nograph peers(`peers`j'') scopeobs(`scopeout`j'')
 	replace `pv'=1 if (`peers`j''==1) | (`scopeout`j''==1)
@@ -76,6 +79,7 @@ quie forval i=1/`Ncombs' {
 
 
 frame `_temp': {
+
 quie gen dif_abs = eff_size-ES 
 quie gen dif_rel= 100*dif_abs / ES
 quie rename (ES eff_size) (eff_or eff_nw)
@@ -90,7 +94,6 @@ else quietly: {
 
 forval i=1/`k' {
 	frame `_temp2': {
-		//noi describe
 		gen `idvar'`i'=`idvar' 
 		gen ceiling`i'=(`peers`i''==1) 
 		gen scope`i'=(`scopeout`i''==1)
@@ -98,8 +101,9 @@ forval i=1/`k' {
 	}
 	merge m:1 `idvar'`i' using `_temp3', keepusing(ceiling`i' scope`i') keep(match master) 
 	drop _merge
-	}
-	quie egen check= rowmiss(id*)
+		}
+	
+	quie egen check= rowmiss(`idvar'*)
 	levelsof `idvar'1 if (check==`k'-1) & scope1, local(scopeoutliers)
 	quie egen scope=anymatch(`idvar'*), v(`scopeoutliers')
 	levelsof `idvar'1 if (check==`k'-1) & ceiling1, local(ceilingoutliers)
@@ -110,7 +114,7 @@ forval i=1/`k' {
 	gsort -absrel
 	quie gen _rank=_n
 	quie drop absrel
-	quie drop if dif_abs==0
+	//quie drop if dif_abs==0
 	format eff_or     eff_nw     dif_abs  %9.2f
 	format dif_rel   %9.1f
 	keep _rank `idvar'* eff_nw eff_or dif_abs dif_rel ceiling scope

@@ -93,7 +93,7 @@ By default the upper left corner is analysed for all independent variables and c
 
 {marker examples}{...}
 {title:Examples}
-{phang2}{cmd:. nca_outliers individualism innovationperformance, id(country) ceilings(cr_fdh)}{p_end}
+{phang2}{cmd:. nca_outliers individualism innovationperformance, id(country) ceiling(ce_fdh)}{p_end}
 
 
 {title:Author}
