@@ -1,10 +1,10 @@
 *! nca_estimate v1.0 08/28/2025
 ************START NCA_ESTIMATE
 pro def nca_estimate, eclass 
-syntax varlist (numeric min=2) [if] [in], [CEILings(string asis) nograph  TESTrep(integer 0)  GRAPHNAmes(string) nocombine BOTtlenecks(numlist sort) BOTtlenecks_default SCOpe(numlist missingokay)  flipx flipy CORner(numlist integer missingokay) steps(integer 10) stepsize(numlist max=1 >=0) XBOTtlenecks(string) YBOTtlenecks(string) cutoff(integer 0) noSummaries Version(integer 3) peers(name max=1) scopeobs(name max=1) ]
+syntax varlist (numeric min=2) [if] [in], [CEILings(string asis) nograph  TESTrep(integer 0)  GRAPHNAmes(string) nocombine BOTtlenecks(numlist sort) BOTtlenecks_default SCOpe(numlist missingokay)  flipx flipy CORner(numlist integer missingokay) steps(integer 10) stepsize(numlist max=1 >=0) XBOTtlenecks(string) YBOTtlenecks(string) cutoff(integer 0) noSummaries peers(name max=1) scopeobs(name max=1) ]
 marksample touse //setting the estimation sample
 
-local version "v`version'"
+nca_dependencies
 if (`cutoff'>2) {
 	di as error "invalid {bf: cutoff}"
 	exit 144
@@ -154,7 +154,8 @@ local plotcmd
 tempname result_x scopex bottlenecks_x results bnecks_table
 _rmcoll `X', expand
 _rmdcoll `y' `X'
-	quie cap gen ______ToUsE=`touse'
+	quie cap gen ______ToUsE=`touse
+	local version "v3"
 foreach x of local X {
 	local plotcmd 
 	matrix `scopex'=`scopeX'[rownumb(`scopeX',"`x'"),1..2]

@@ -1,6 +1,7 @@
 *! nca_outliers v0.1 08/27/2025
 pro def nca_outliers
 syntax varlist (numeric min=2 max=2) [if] [in], IDvar(varlist  numeric  min=1 max=1) [CEILing(string) CORner(integer 1) flipx flipy k(integer 1) MINDif(real 0.01)  MAXResults(integer 25) save(string asis) verbose]
+version 17
 if ("`ceiling'"=="") local ceiling ce_fdh
 isid `idvar'
 tempname  scopeout1 peers1 scopeout peers
@@ -111,10 +112,11 @@ forval i=1/`k' {
 	
 	drop ceiling1-ceiling`k' scope1-scope`k'
 }
-	gsort -absrel
+	quie describe `idvar'*, varlist
+	gsort -absrel `r(sortlist)', mfirst
 	quie gen _rank=_n
 	quie drop absrel
-	//quie drop if dif_abs==0
+	quie drop if dif_abs==0
 	format eff_or     eff_nw     dif_abs  %9.2f
 	format dif_rel   %9.1f
 	keep _rank `idvar'* eff_nw eff_or dif_abs dif_rel ceiling scope
