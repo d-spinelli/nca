@@ -86,13 +86,14 @@ By default the upper left corner is analysed for all independent variables and c
 {opt maxr:esults(#)} maximum number of outliers to be shown. Default value is 25. 
 
 {phang}
-{opt save(string asis)} saves the results in a data set whith the name given by filename. 
+{opt save(filename)} saves the results in a data set whith the name given by filename. 
   
 
 
 
 {marker examples}{...}
 {title:Examples}
+{phang2}{cmd:. use ncaexample, clear}{p_end}
 {phang2}{cmd:. nca_outliers individualism innovationperformance, id(country) ceiling(ce_fdh)}{p_end}
 
 
