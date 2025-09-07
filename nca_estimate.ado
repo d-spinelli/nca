@@ -154,7 +154,7 @@ local plotcmd
 tempname result_x scopex bottlenecks_x results bnecks_table
 _rmcoll `X', expand
 _rmdcoll `y' `X'
-	quie cap gen ______ToUsE=`touse
+	quie cap gen ______ToUsE=`touse'
 	local version "v3"
 foreach x of local X {
 	local plotcmd 
