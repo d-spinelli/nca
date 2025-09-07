@@ -6,6 +6,8 @@ F nca_display.ado
 F nca_display_bottleneck_table.ado
 F nca_estimate.ado
 F nca_get_centiles.ado
+F nca_outliers.ado
+F nca_outliers.sthlp
 F nca_parse_scope.ado
 F nca_perm.ado
 F nca_power.ado
