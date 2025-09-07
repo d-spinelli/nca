@@ -1,4 +1,4 @@
-*! nca_estimate v1.0 08/28/2025
+*! nca_estimate v1.0 09/07/2025
 ************START NCA_ESTIMATE
 pro def nca_estimate, eclass 
 syntax varlist (numeric min=2) [if] [in], [CEILings(string asis) nograph  TESTrep(integer 0)  GRAPHNAmes(string) nocombine BOTtlenecks(numlist sort) BOTtlenecks_default SCOpe(numlist missingokay)  flipx flipy CORner(numlist integer missingokay) steps(integer 10) stepsize(numlist max=1 >=0) XBOTtlenecks(string) YBOTtlenecks(string) cutoff(integer 0) noSummaries peers(name max=1) scopeobs(name max=1) ]
