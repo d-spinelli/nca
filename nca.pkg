@@ -1,6 +1,7 @@
 F nca.ado
 F nca.sthlp
 F nca_centiles.ado
+F nca_dependencies.ado
 F nca_display.ado
 F nca_display_bottleneck_table.ado
 F nca_estimate.ado
