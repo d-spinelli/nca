@@ -1,5 +1,7 @@
 F nca.ado
 F nca.sthlp
+F nca_analysis.ado
+F nca_analysis.sthlp
 F nca_centiles.ado
 F nca_dependencies.ado
 F nca_display.ado
@@ -14,7 +16,6 @@ F nca_power.ado
 F nca_power.sthlp
 F nca_random.ado
 F nca_random.sthlp
-F nca_test.ado
 F lnca.mlib
 F ncaexample.dta
 F ncaexample2.dta
