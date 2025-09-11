@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>NCA: Necessary Condition Analysis for Stata</title>
+  <title>nca: Necessary Condition Analysis for Stata</title>
   <style>
     body { font-family: Arial, sans-serif; margin: 2rem auto; max-width: 750px; line-height: 1.6; padding: 0 1rem; }
     h1, h2 { color: #1a237e; }
@@ -16,23 +16,33 @@
 
   <h2>🔧 Installation</h2>
   <p>Install directly from GitHub using:</p>
-  <pre><code>net install nca, from("https://d-spinelli.github.io/nca")</code></pre>
+  <pre><code> net install nca, from("https://d-spinelli.github.io/nca/") replace </code></pre>
 
   <h2>🚀 Quick Start</h2>
-  <pre><code>. nca depvar indepvar, method(ce_fdh) plot</code></pre>
+  <pre><code>. use ncaexample, clear </code></pre>
+  <pre><code>. nca_analysis individualism innovationperformance, ceilings( ce_fdh ) bottlenecks </code></pre>
 
   <p>This command applies the CE-FDH method and generates a bottleneck plot. Several other methods and plotting options are also available.</p>
 
   <h2>📄 Documentation</h2>
   <ul>
-    <li><a href="nca_help.html">Help File</a></li>
-    <li><a href="examples.html">Examples</a></li>
+    <li><code>. help nca </code></li>
+    </ul>
+  <h2>📄 Authors</h2>
+  <ul>
+    <li><a> Daniele Spinelli, Department of Statistics and Quantitative Methods, University of Milano-Bicocca. Milan, Italy  </a></li>
+    <li><a> Jan Dul, Department of Technology & Operations Management, Rotterdam School of Management. Rotterdam, The Netherlands   </a></li>
     </ul>
 
-  <h2>📬 Citation</h2>
-  <p>If you use <strong>NCA</strong>, please cite:</p>
+  <h2>📄 Contributors</h2>
+  <ul>
+        <li><a>  Govert Buijs, Department of Technology & Operations Management, Rotterdam School of Management. Rotterdam, The Netherlands   </a></li>
+    </ul>
+  
+  <h2></h2> Citation</h2>
+  <p>If you use <strong>nca</strong>, please cite:</p>
   <blockquote>
-    Daniele Spinelli. (2025). NCA: A Stata Package for Necessary Condition Analysis. 
+    Daniele Spinelli and Jan Dul. (2025). nca: A Stata Package for Necessary Condition Analysis. 
   </blockquote>
 
  
