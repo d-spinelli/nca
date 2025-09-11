@@ -11,30 +11,30 @@
   </style>
 </head>
 <body>
-  <h1>📈 NCA: Necessary Condition Analysis</h1>
-  <p><strong>NCA</strong> is a Stata package that implements Necessary Condition Analysis, a method for identifying necessary—but not sufficient—conditions in datasets. It helps researchers uncover constraints that must be present for an outcome to occur.</p>
+  <h1> nca: Necessary Condition Analysis</h1>
+  <p><strong>nca</strong> is a Stata package that implements Necessary Condition Analysis, a method for identifying necessary—but not sufficient—conditions in datasets. It helps researchers uncover constraints that must be present for an outcome to occur.</p>
 
-  <h2>🔧 Installation</h2>
+  <h2> Installation </h2>
   <p>Install directly from GitHub using:</p>
   <pre><code> net install nca, from("https://d-spinelli.github.io/nca/") replace </code></pre>
 
-  <h2>🚀 Quick Start</h2>
+  <h2> Quick Start </h2>
   <pre><code>. use ncaexample, clear </code></pre>
   <pre><code>. nca_analysis individualism innovationperformance, ceilings( ce_fdh ) bottlenecks </code></pre>
 
   <p>This command applies the CE-FDH method and generates a bottleneck plot. Several other methods and plotting options are also available.</p>
 
-  <h2>📄 Documentation</h2>
+  <h2> Documentation </h2>
   <ul>
     <li><code>. help nca </code></li>
     </ul>
-  <h2>📄 Authors</h2>
+  <h2> Authors </h2>
   <ul>
     <li><a> Daniele Spinelli, Department of Statistics and Quantitative Methods, University of Milano-Bicocca. Milan, Italy  </a></li>
     <li><a> Jan Dul, Department of Technology & Operations Management, Rotterdam School of Management. Rotterdam, The Netherlands   </a></li>
     </ul>
 
-  <h2>📄 Contributors</h2>
+  <h2> Contributors </h2>
   <ul>
         <li><a>  Govert Buijs, Department of Technology & Operations Management, Rotterdam School of Management. Rotterdam, The Netherlands   </a></li>
     </ul>
